@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    /*Background Color - White*/
+    background-color: black;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+
+/* Logo Row */
+
+nav {
+    display: flex;
+    padding: 1%;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.nav-links ul li::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: black;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+
+/* Create and Enter buttons */
+
+.text-box {
+    width: 90%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 62px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: white;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    justify-content: space-evenly;
+    color: white;
+    border: 1px solid white;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    width: 100px;
+    height: 15px;
+}
+
+.hero-btn a {
+    list-style: none;
+    display: inline-block;
+    padding: 12px 35px;
+    position: relative;
+}
+
+.hero-btn1 {
+    display: inline-block;
+    text-decoration: none;
+    justify-content: space-evenly;
+    color: black;
+    border: none;
+    padding: 12px 34px;
+}
+
+.hero-btn:hover {
+    border: 1px white;
+    background: #fff3f3;
+    transition: 1s;
+    color: black;
+}
+
+
+/* to make it mobile compatible */
+
+nav .fa {
+    display: none;
+}
+
+@media(max-width: 700px) {
+    .text-box h1 {
+        font-size: 20px;
+    }
+    .nav-links ul li {
+        display: block;
+    }
+    .nav-links {
+        position: absolute;
+        background: white;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+    nav .fa {
+        display: block;
+        color: black;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+    .nav-links ul {
+        padding: 15px;
+    }
+    .hero-btn {
+        display: inline-block;
+        text-decoration: none;
+        justify-content: space-evenly;
+        color: white;
+        border: 1px solid white;
+        padding: 6px 17px;
+        font-size: 13px;
+        background: transparent;
+        position: relative;
+        cursor: pointer;
+        align-items: center;
+        width: 100px;
+        height: 15px;
+    }
+    .hero-btn1 {
+        display: inline-block;
+        text-decoration: none;
+        justify-content: space-evenly;
+        color: black;
+        border: none;
+        padding: 6px 17px;
+    }
+}
+
+
+/* What is Nosh */
+
+.Nosh {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: top 100px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 60px;
+}
+
+p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+
+
+/* Nosh Row */
+
+.row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.course-column {
+    flex-basis: 31%;
+    background: #fff3f3;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+h3 {
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.course-column p {
+    text-align: justify;
+}
+
+.course-column:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media(max-width: 700px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+
+/* Footer */
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.icons .fa {
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
+}
+
+.fa-heart {
+    color: #f44336;
+}
+
+.tinytext p {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.Mlove p {
+    font-size: 10px;
+}

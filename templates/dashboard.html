@@ -1,0 +1,26 @@
+<!DOCTYPE html>{% extends "base.html" %} {% block title %} Nosh | Dashboard {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Enter_id.css') }}"> {% endblock %} {% block content %}
+
+
+<div class="tb">
+
+    {% if ID %}
+    <h1>Here are your Events</h1>
+    <table>
+        <tr>
+            <td>Unique_ID</td>
+            <td>Event Name</td>
+            <td>Total Nosh#</td>
+        </tr>
+        {% for line in details %} {(ID,events,total)=line}
+        <tr>
+            <td>{{ID}}</td>
+            <td>{{total}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h1>User not found (Try Again)</h1>
+    {% endif %}
+</div>
+{% endblock %}

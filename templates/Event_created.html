@@ -1,0 +1,66 @@
+<!DOCTYPE html> {% extends "base.html" %} {% block title %} Nosh | Event Created {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Event_created.css') }}"> {% endblock %} {% block content %}
+
+<div class="tb">
+    <h1>Your event has been created!!</h1>
+
+    <h1>Event_ID is {{  Event_ID }}</h1>
+    <table>
+        <tr>
+            <td>Your Name</td>
+            <td>{{ Organizer_name }}</td>
+        </tr>
+        <tr>
+            <td>The Event Name</td>
+            <td>{{ Event_name }}</td>
+
+        </tr>
+
+    <table>
+        <tr>
+            <td>Your Name</td>
+            <td>{{ Name }}</td>
+        </tr>
+        {% if events %}
+        <tr>
+            <td>The Event Name</td>
+            <td>{{ events }}</td>
+
+        </tr>
+        {% else %}
+
+        <tr>
+            <td>The Event Name</td>
+            <td>{{ Custom_event }}</td>
+        </tr>
+
+        {% endif %}
+
+        <tr>
+            <td>Date:</td>
+            <td>{{ Date }}</td>
+        </tr>
+        <tr>
+            <td>Time:</td>
+            <td>{{ Time }}</td>
+        </tr>
+        <tr>
+            <td>Enter Venue:</td>
+            <td>{{ Venue }}</td>
+        </tr>
+        <tr>
+            <td>Your Contact Number:</td>
+
+            <td>{{ Phno }}</td>
+
+            <td>{{ C_number }}</td>
+
+        </tr>
+    </table>
+
+    <p> {{ message }} </p>
+
+</div>
+
+
+{% endblock %}

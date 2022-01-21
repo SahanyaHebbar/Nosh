@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block CSSlink %} {% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/76af01bf1c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="/"><img src="{{ url_for('static',filename='images/logo.png') }}"></a>
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        {% block content %} {% endblock %}
+    </section>
+
+
+
+    <!-- JavaScript for Toggle menue in phone/tablet -->
+    <script>
+        var navlinks = document.getElementById("navlinks");
+
+        function showMenu() {
+            navlinks.style.right = '0';
+        }
+
+        function hideMenu() {
+            navlinks.style.right = '-200px';
+        }
+    </script>
+
+    <!-- Footer -->
+    <section class="footer">
+
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <div class="tinytext">
+            <p><i class="fa fa-copyright"></i> 2001-2002 by YoursTruly. All Rights Reserved. <br>Nosh is powered by SastaAmbani</p>
+            <p class="Mlove">Made with <i class="fa fa-heart"></i> by Sahanya and Sujay <br></p>
+            <a href="/"><img src="{{ url_for('static',filename='images/logo.png') }}"></a>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

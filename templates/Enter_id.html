@@ -1,0 +1,30 @@
+<!DOCTYPE html>{% extends "base.html" %} {% block title %} Nosh | ID {% endblock %} {% block CSSlink %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Enter_id.css') }}"> {% endblock %} {% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Create_event.css') }}"> {% endblock %} {% block content %}
+
+
+
+<div class="tb">
+    <h1>Mark your Attendance</h1>
+    <form action="thanks.html" method="get">
+        <table>
+            <tr>
+                <td>Enter The Unique_ID</td>
+                <td><input type="text" name="Event_ID" required style="width:193px"></td>
+            </tr>
+            <tr>
+                <td>Click on submit to record your response</td>
+                <td><input type="submit" name="" value="Submit" style="width:193px"></td>
+            </tr>
+
+            <tr>
+                <td>Click on submit to record your response</td>
+                <td><input type="submit" name="" value="Submit" style="width:193px"></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+{% endblock %}

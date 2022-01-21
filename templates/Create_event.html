@@ -1,0 +1,67 @@
+<!DOCTYPE html> {% extends "base.html" %} {% block title %} Nosh | Create Event {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Create_event.css') }}"> {% endblock %} {% block content %}
+
+
+<div class="tb">
+    <h1>Please fill in your details</h1>
+    <form action="/Event_created" method="post">
+        <table>
+            <tr>
+                <td>Organizer Name:</td>
+                <td><input type="text" name="Organizer_name" placeholder="" required></td>
+            </tr>
+            <tr>
+                <td>Contact Number:</td>
+                <td><input type="text" name="Phno" style="width:193px" required></td>
+            </tr>
+            <tr>
+                <td>Event Name:</td>
+                <td><select name="Event_name" style="width:193px">
+                <td><input type="text" name="Name" placeholder="" required></td>
+            </tr>
+            <tr>
+                <td>Contact Number:</td>
+                <td><input type="text" name="C_number" style="width:193px" required></td>
+            </tr>
+            <tr>
+                <td>Event Name:</td>
+                <td><select name="events" style="width:193px">
+
+                    <option>Marriage</option>
+                    <option>Birthday Party</option>
+                    <option>House warming</option>
+                    <option>Thread Ceremony</option>
+                    <option>Custom event</option>
+                </select></td>
+
+            </tr>
+                  
+            {% if 'Custom event' in events %}
+
+            <tr>
+                <td>If its custom event specify:</td>
+                <td><input type="text" name="Custom_event" style="width:193px"></td>
+            </tr>
+
+            {% endif %}
+            <tr>
+                <td>Event Date:</td>
+                <td><input type="date" name="Date" style="width:193px" required></td>
+            </tr>
+            <tr>
+                <td>Event Time:</td>
+                <td><input type="time" name="Time" style="width:193px" required></td>
+            </tr>
+            <tr>
+                <td>Venue:</td>
+                <td><input type="text" name="Venue" style="width:193px" required></td>
+            </tr>
+
+        </table>
+
+        <textarea name="message" rows="5" cols="37" placeholder="Message for the attendees"></textarea>
+        <section class="some"><input type="submit" name="" value="Submit" style="height: 40px; width: 150px;"></section>
+    </form>
+</div>
+
+{% endblock %}

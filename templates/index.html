@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosh | Home</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/76af01bf1c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="/"><img src="{{ url_for('static',filename='images/logo.png') }}"></a>
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="/loginSignup">LOGIN/SIGNUP</a></li>
+                    <li><a href="">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class=" text-box ">
+            <h1>RSVP Anonymously</h1>
+            <p>More Savings + Less food wastage = Better World </p>
+            <!--use <br> to use a multilined paragraph-->
+            <a href="/Create_event" class="hero-btn ">Create Event</a>
+            <a class="hero-btn1 "></a>
+            <a href="/Enter_id" class="hero-btn ">Enter ID</a>
+        </div>
+    </section>
+
+
+    <!-- About -->
+    <section class="Nosh">
+        <h1>What is NOS#?</h1>
+        <p> A platform that allow invitees to rsvp anonymously and give the organizers a better estimate of the total number of attendees for an event. </p>
+
+        <div class="row">
+            <div class="course-column">
+                <h3>Create Event</h3>
+                <p>Register your event and obtain a unique Event ID. Circulate this Event ID amongst your invitees and ask them to head over to nosh.com, enter the event ID and anonymously enter the number of attendees for the event from their side. You
+                    can view your event headcount before placing the food order.</p>
+            </div>
+            <div class="course-column">
+                <h3>Unique ID</h3>
+                <p>Invited for an event? RSVP anonymously using the given Event ID and let the organizers know the number of people attending the event from your side. Do your part in making the world a better place now!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Toggle menue in phone/tablet -->
+    <script>
+        var navlinks = document.getElementById("navlinks");
+
+        function showMenu() {
+            navlinks.style.right = '0';
+        }
+
+        function hideMenu() {
+            navlinks.style.right = '-200px';
+        }
+    </script>
+
+    <!-- Footer -->
+    <section class="footer">
+
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <div class="tinytext">
+            <p><i class="fa fa-copyright"></i> 2001-2002 by YoursTruly. All Rights Reserved. <br>Nosh is powered by SastaAmbani</p>
+            <p class="Mlove">Made with <i class="fa fa-heart"></i> by Sahanya and Sujay <br></p>
+            <a href="/"><img src="{{ url_for('static',filename='images/logo.png') }}"></a>
+
+        </div>
+
+    </section>
+</body>
+
+</html>

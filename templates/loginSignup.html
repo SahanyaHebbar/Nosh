@@ -1,0 +1,56 @@
+<!DOCTYPE html> {% extends "base.html" %} {% block title %} Nosh | Login/Signup {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='loginSignup.css') }}"> {% endblock %} {% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="inner-box" id="card">
+            <div class="card-front">
+                <h2>Login</h2>
+
+                <form name="Login" method="get" action="/dashboard">
+                    <input type="email" class="input-box" placeholder="Email ID" name="Useremail" required>
+                    <input type="password" class="input-box" placeholder="Password" name="Userpass" required>
+        <form>
+                    <input type="email" class="input-box" placeholder="Email ID" required>
+                    <input type="password" class="input-box" placeholder="Password" required>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <input type="checkbox"><span> Remember Me</span>
+                </form>
+                <button type="button" class="btn" onclick="openRegister()">I'm new here</button>
+                <a href="">Forgot Password</a>
+            </div>
+            <div class="card-back">
+                <h2>Sign-up</h2>
+                <form name="Signup" method="post">
+                    <input type="text" class="input-box" placeholder="Name" name="Username" required>
+                    <input type="text" class="input-box" placeholder="Phone Number" name="Phno" required>
+                    <input type="email" class="input-box" placeholder="Email ID" name="email" required>
+                    <input type="password" class="input-box" placeholder="Password" name="password" required>
+                    <button type="submit" class="submit-btn">Create Account</button>
+                    <input type="checkbox"><span> Remember Me</span>
+                </form>
+                <button type="button" class="btn1" onclick="openLogin()">I've an account</button>
+                <a href="">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- JavaScript to rotate card -->
+<script>
+    var card = document.getElementById("card");
+
+    function openRegister() {
+        card.style.transform = "rotateY(-180deg)";
+    }
+
+    function openLogin() {
+        card.style.transform = "rotateY(0deg)";
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>{% extends "base.html" %} {% block title %} Nosh | NGOs {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Enter_id.css') }}"> {% endblock %} {% block content %}
+
+
+<div class="NGOtb">
+    <h1>NGO Contact Information</h1>
+    <form method="get">
+        <table>
+            <tr>
+                <td class="coltitle" style="width: 200px; height: 30px;">NGO Name</td>
+                <td class="coltitle" style="width: 200px; height: 30px;">Contact Number</td>
+            </tr>
+            {% for row in value %}
+            <tr>
+                <td style="width: 200px; height: 15px;">{{row[0]}}</td>
+                <td style="width: 200px; height: 15px;">{{row[1]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+{% endblock %}

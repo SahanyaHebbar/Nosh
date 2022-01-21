@@ -1,0 +1,66 @@
+@import url('base.css');
+.header {
+    min-height: 100vh;
+    width: 100%;
+    /*Background Color - White*/
+    background-color: black;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+@media(max-width: 700px) {
+    /* Text field compatibility */
+    td {
+        padding: 3px;
+        font-size: 10px;
+    }
+    .tb h1 {
+        font-size: 20px;
+    }
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 60px;
+    color: white;
+    text-align: center;
+}
+
+table {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 5%;
+    padding: 10px;
+    margin: auto;
+    border: 10px;
+}
+
+td {
+    padding: 6px;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.tb {
+    text-align: center;
+}
+
+input {
+    border: auto;
+}
+
+.some {
+    padding: 35px;
+}
+
+.cusev {
+    display: block;
+}
