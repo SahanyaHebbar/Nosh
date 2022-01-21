@@ -2,10 +2,13 @@ from flask import Flask, redirect, render_template
 from flask import request
 from datetime import datetime
 import sqlite3
+import random 
+
+def id():
+    number = random.randint(1000,9999)
+    return number
 
 app=Flask(__name__)
-
-
 if __name__ == "__main__":
     app.run(debug=True)
 
@@ -24,7 +27,7 @@ def Enter_id():
 @app.route('/loginSignup', methods=['POST','GET'])
 def loginSignup():
     render_template('loginSignup.html')
-    con=sqlite3.connect('NoshFlask.db')
+    con=sqlite3.connect('Nosh.db')
     c=con.cursor()
     if request.method=='POST':
         if request.form['email']!="" and request.form['password']!="":      #Signup stuff
@@ -48,14 +51,25 @@ def loginSignup():
 
 @app.route('/Event_created', methods=["POST"])
 def Event_created():
-    Name = request.form.get("Name")
-    events = request.form.get("events")
-    custom_event = request.form.get("custom_event")
+    Event_ID=id()
+    con=sqlite3.connect('Nosh.db')
+    cur=con.cursor()
+    cur.execute("SELECT * from Event where Event_ID=(?)",(Event_ID,))
+    data=cur.fetchall()
+    if data:
+        Event_created()
+    Organizer_name = request.form.get("Organizer_name")
+    Event_name = request.form.get("Event_name")
+    if Event_name=="Custom event":
+        Event_name = request.form.get("Custom_event")
     Date = request.form.get("Date")
     Time = request.form.get("Time")
     Venue = request.form.get("Venue")
-    C_number=request.form.get("C_number")
-    return render_template("Event_created.html",Name=Name,events=events,custom_event=custom_event,Date=Date,Time=Time,Venue=Venue,C_number=C_number)
+    Phno=request.form.get("Phno")
+    No_of_attendees=0
+    cur.execute("Insert into event values(?,?,?,?,?,?,?,?)",(Phno,Event_ID,Event_name,Organizer_name,Venue,Date,Time,No_of_attendees))
+    con.commit()
+    return render_template("Event_created.html",Event_ID=Event_ID,Organizer_name=Organizer_name,Event_name=Event_name,Date=Date,Time=Time,Venue=Venue,Phno=Phno)
 
 
 @app.route('/dashboard', methods=["GET"])
@@ -63,13 +77,13 @@ def dashboard():
     EmailID=request.form.get('Useremail')
     con=sqlite3.connect('Nosh.db')
     cur=con.cursor()
-    cur.execute("SELECT A.Event_ID ,A.No_of_Attendees from Event E,Attendees A, Organizer O where O.Email_ID=(?) AND E.phno=O.Phone_Number AND E.Event_ID=A.Event_ID",(EmailID,))
+    cur.execute("SELECT E.Event_ID ,E.No_of_Attendees from Event E, Organizer O where O.Email_ID=(?) AND E.phno=O.Phone_Number",(EmailID,))
     details=cur.fetchall()
-    return render_template("dashboard.html")
+    return render_template("dashboard.html",details=details)
 
 @app.route('/NGO',methods=['GET'])
 def ngo():
-    con=sqlite3.connect('NoshFlask.db')
+    con=sqlite3.connect('Nosh.db')
     c=con.cursor()
     c.execute("SELECT * FROM NGO")
     data=c.fetchall()
