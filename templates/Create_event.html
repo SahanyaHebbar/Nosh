@@ -17,15 +17,6 @@
             <tr>
                 <td>Event Name:</td>
                 <td><select name="Event_name" style="width:193px">
-                <td><input type="text" name="Name" placeholder="" required></td>
-            </tr>
-            <tr>
-                <td>Contact Number:</td>
-                <td><input type="text" name="C_number" style="width:193px" required></td>
-            </tr>
-            <tr>
-                <td>Event Name:</td>
-                <td><select name="events" style="width:193px">
 
                     <option>Marriage</option>
                     <option>Birthday Party</option>
@@ -36,14 +27,12 @@
 
             </tr>
                   
-            {% if 'Custom event' in events %}
+
 
             <tr>
                 <td>If its custom event specify:</td>
                 <td><input type="text" name="Custom_event" style="width:193px"></td>
             </tr>
-
-            {% endif %}
             <tr>
                 <td>Event Date:</td>
                 <td><input type="date" name="Date" style="width:193px" required></td>
