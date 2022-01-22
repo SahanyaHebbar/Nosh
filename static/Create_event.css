@@ -49,9 +49,10 @@ textarea {
     padding: 10px;
 }
 
-.tb {
-    text-align: center;
-}
+
+/* .tb {
+    text-align: left;
+} */
 
 input {
     border: auto;
@@ -59,8 +60,13 @@ input {
 
 .some {
     padding: 35px;
+    text-align: center;
 }
 
 .cusev {
     display: block;
+}
+
+.record {
+    text-align: left;
 }
