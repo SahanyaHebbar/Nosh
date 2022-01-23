@@ -4,15 +4,15 @@
 
 <div class="tb">
 
-    {% if ID %}
+    {% if details %}
     <h1>Here are your Events</h1>
     <table>
         <tr>
             <td>Unique_ID</td>
-            <td>Event Name</td>
             <td>Total Nosh#</td>
         </tr>
-        {% for line in details %} {(ID,events,total)=line}
+        {% for ID,total in details %} 
+
         <tr>
             <td>{{ID}}</td>
             <td>{{total}}</td>

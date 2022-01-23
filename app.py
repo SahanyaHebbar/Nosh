@@ -1,4 +1,5 @@
-from flask import Flask, redirect, render_template
+from glob import glob
+from flask import Flask, redirect, render_template, url_for
 from flask import request
 from datetime import datetime
 import sqlite3
@@ -11,6 +12,8 @@ def id():
 app=Flask(__name__)
 if __name__ == "__main__":
     app.run(debug=True)
+
+current_username=None
 
 @app.route('/')
 def index():
@@ -26,28 +29,36 @@ def Enter_id():
 
 @app.route('/loginSignup', methods=['POST','GET'])
 def loginSignup():
+    global current_username
     render_template('loginSignup.html')
     con=sqlite3.connect('Nosh.db')
     c=con.cursor()
     if request.method=='POST':
-        if request.form['email']!="" and request.form['password']!="":      #Signup stuff
-            EmailID=request.form['email']
-            Password=request.form['password']
-            c.execute("Select Email_ID, Password from Organizer where Email_ID=(?)",(EmailID,))
-            data=c.fetchall()
-            if data:
-                return render_template("error.html")
-            else:
-                Name=request.form['Username']
-                Phno=request.form['Phno']
-                c.execute("INSERT INTO Organizer VALUES (?,?,?,?)",(Name,Phno,EmailID,Password))
-                con.commit()
-                con.close()
-                return render_template('loginSignup.html')
+        if "loginemail" in request.form:
+            email=request.form['loginemail']
+            password=request.form['loginpass']
+            current_username=email
+            if current_username:
+                return redirect(url_for(".dashboard"))
+        else:
+            if request.form['email']!="" and request.form['password']!="":      #Signup stuff
+                EmailID=request.form['email']
+                Password=request.form['password']
+                c.execute("Select Email_ID, Password from Organizer where Email_ID=(?)",(EmailID,))
+                data=c.fetchall()
+                if data:
+                    return render_template("error.html")
+                else:
+                    Name=request.form['Username']
+                    Phno=request.form['Phno']
+                    c.execute("INSERT INTO Organizer VALUES (?,?,?,?)",(Name,Phno,EmailID,Password))
+                    con.commit()
+                    con.close()
+                    return render_template('loginSignup.html')
     elif request.method=='GET':
         return render_template("loginSignup.html")
             
-        
+      
 
 @app.route('/Event_created', methods=["POST"])
 def Event_created():
@@ -72,12 +83,12 @@ def Event_created():
     return render_template("Event_created.html",Event_ID=Event_ID,Organizer_name=Organizer_name,Event_name=Event_name,Date=Date,Time=Time,Venue=Venue,Phno=Phno)
 
 
-@app.route('/dashboard', methods=["GET"])
+@app.route('/dashboard')
 def dashboard():
-    EmailID=request.form.get('Useremail')
+    global current_username
     con=sqlite3.connect('Nosh.db')
     cur=con.cursor()
-    cur.execute("SELECT E.Event_ID ,E.No_of_Attendees from Event E, Organizer O where O.Email_ID=(?) AND E.phno=O.Phone_Number",(EmailID,))
+    cur.execute('SELECT E.Event_ID ,E.No_of_Attendees from Event E where E.Phno=(select O.Phone_number from Organizer O where O.Email_ID= ? )',[str(current_username)])
     details=cur.fetchall()
     return render_template("dashboard.html",details=details)
 
