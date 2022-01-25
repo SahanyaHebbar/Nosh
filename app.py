@@ -1,9 +1,10 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, url_for
 from flask import request
 from datetime import datetime
 import sqlite3
-import random 
+import random
 
+current_username=None
 def id():
     number = random.randint(1000,9999)
     return number
@@ -26,11 +27,19 @@ def Enter_id():
 
 @app.route('/loginSignup', methods=['POST','GET'])
 def loginSignup():
-    render_template('loginSignup.html')
-    con=sqlite3.connect('Nosh.db')
+    global current_username
+    render_template("loginSignup.html")
+    con=sqlite3.connect('nosh.db')
     c=con.cursor()
     if request.method=='POST':
-        if request.form['email']!="" and request.form['password']!="":      #Signup stuff
+        if "loginemail" in request.form:
+            email=request.form['loginemail']
+            password=request.form['loginpass']
+            print(current_username)
+            current_username=email
+            if current_username:
+                return redirect(url_for(".dashboard"))
+        elif request.form['email']!="" and request.form['password']!="":      #Signup stuff
             EmailID=request.form['email']
             Password=request.form['password']
             c.execute("Select Email_ID, Password from Organizer where Email_ID=(?)",(EmailID,))
@@ -52,7 +61,7 @@ def loginSignup():
 @app.route('/Event_created', methods=["POST"])
 def Event_created():
     Event_ID=id()
-    con=sqlite3.connect('Nosh.db')
+    con=sqlite3.connect('nosh.db')
     cur=con.cursor()
     cur.execute("SELECT * from Event where Event_ID=(?)",(Event_ID,))
     data=cur.fetchall()
@@ -72,18 +81,19 @@ def Event_created():
     return render_template("Event_created.html",Event_ID=Event_ID,Organizer_name=Organizer_name,Event_name=Event_name,Date=Date,Time=Time,Venue=Venue,Phno=Phno)
 
 
-@app.route('/dashboard', methods=["GET"])
+@app.route('/dashboard')
 def dashboard():
-    EmailID=request.form.get('Useremail')
-    con=sqlite3.connect('Nosh.db')
+    global current_username
+    con=sqlite3.connect('nosh.db')
     cur=con.cursor()
-    cur.execute("SELECT E.Event_ID ,E.No_of_Attendees from Event E, Organizer O where O.Email_ID=(?) AND E.phno=O.Phone_Number",(EmailID,))
+    cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(Select O.Phone_number from Organizer O where O.Email_ID=?)",(current_username,))
     details=cur.fetchall()
+    print(details)
     return render_template("dashboard.html",details=details)
 
 @app.route('/NGO',methods=['GET'])
 def ngo():
-    con=sqlite3.connect('Nosh.db')
+    con=sqlite3.connect('nosh.db')
     c=con.cursor()
     c.execute("SELECT * FROM NGO")
     data=c.fetchall()
