@@ -12,7 +12,7 @@
                 <td><input type="text" name="Event_ID" required style="width:193px"></td>
             </tr>
             <tr>
-                <td>Click on submit to record your response</td>
+                <td>Submit:</td>
                 <td><input type="submit" name="submit" value="Submit" style="width:193px"></td>
             </tr>
 
@@ -22,28 +22,39 @@
     <table>
         <tr>
             <td>Event Name:</td>
-            <td>{{event}}</td>
+            <td style="width:193px">{{event}}</td>
         </tr>
         <tr>
             <td>Organizer Name:</td>
-            <td>{{oname}}</td>
+            <td style="width:193px">{{oname}}</td>
         </tr>
         <tr>
             <td>Organizer Phone Number:</td>
-            <td>{{phno}}</td>
+            <td style="width:193px">{{phno}}</td>
         </tr>
         <tr>
             <td>Event Date:</td>
-            <td>{{date}}</td>
+            <td style="width:193px">{{date}}</td>
         </tr>
         <tr>
             <td>Event Time:</td>
-            <td>{{time}}</td>
+            <td style="width:193px">{{time}}</td>
         </tr>
         <tr>
             <td>Event Venue:</td>
-            <td>{{venue}}</td>
+            <td style="width:193px">{{venue}}</td>
         </tr>
+        <form name="Enter_id" action="/success" method="post">
+
+            <tr>
+                <td>Number of Attendees:</td>
+                <td><input type="text" name="Anum" required style="width:193px"></td>
+            </tr>
+            <tr>
+                <td>Submit:</td>
+                <td><input type="submit" name="submit" value="Submit" style="width:193px"></td>
+            </tr>
+        </form>
 
     </table>
     {% endfor %} {% endif %}
