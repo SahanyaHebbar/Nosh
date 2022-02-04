@@ -5,6 +5,7 @@ import sqlite3
 import random
 
 current_username=None
+current_pass=None
 def id():
     number = random.randint(1000,9999)
     return number
@@ -28,15 +29,16 @@ def Enter_id():
 @app.route('/loginSignup', methods=['POST','GET'])
 def loginSignup():
     global current_username
+    global current_pass
     render_template("loginSignup.html")
     con=sqlite3.connect('nosh.db')
     c=con.cursor()
     if request.method=='POST':
-        if "loginemail" in request.form:
+        if "loginemail" in request.form:            #login stuff
             email=request.form['loginemail']
             password=request.form['loginpass']
-            print(current_username)
             current_username=email
+            current_pass=password
             if current_username:
                 return redirect(url_for(".dashboard"))
         elif request.form['email']!="" and request.form['password']!="":      #Signup stuff
@@ -84,13 +86,21 @@ def Event_created():
 @app.route('/dashboard')
 def dashboard():
     global current_username
+    global current_pass
     con=sqlite3.connect('nosh.db')
     cur=con.cursor()
-    cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(Select O.Phone_number from Organizer O where O.Email_ID=?)",(current_username,))
-    details=cur.fetchall()
-    print(details)
-    return render_template("dashboard.html",details=details)
-
+    cur.execute("Select O.Phone_number from Organizer O where O.Email_ID=(?) and O.Password=(?)",(current_username,current_pass,))
+    phoneNumber=cur.fetchall()[0]
+    if(phoneNumber):
+        print(phoneNumber)
+        cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(?)",(phoneNumber[0],))
+        details=cur.fetchall()
+        return render_template("dashboard.html",details=details)
+    else:
+        return redirect(url_for(".error"))
+    #cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(Select O.Phone_number from Organizer O where O.Email_ID=? and O.Password=?)",(current_username,current_pass,))
+    
+    
 @app.route('/NGO',methods=['GET'])
 def ngo():
     con=sqlite3.connect('nosh.db')
@@ -102,3 +112,7 @@ def ngo():
 @app.route('/success',methods=['GET'])
 def success():
     return render_template("success.html")
+
+@app.route('/error',methods=['GET'])
+def error():
+    return render_template("error.html")

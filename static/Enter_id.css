@@ -46,3 +46,26 @@ textarea {
 input {
     border: auto;
 }
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    justify-content: space-evenly;
+    color: white;
+    border: 1px solid white;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    width: 100px;
+    height: 15px;
+}
+
+.hero-btn a {
+    list-style: none;
+    display: inline-block;
+    padding: 12px 35px;
+    position: relative;
+}
