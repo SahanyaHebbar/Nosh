@@ -22,9 +22,19 @@ def index():
 def Create_event():
         return render_template("Create_event.html")
 
-@app.route('/Enter_id')
+@app.route('/Enter_id',methods=['POST','GET'])
 def Enter_id():
-    return render_template("enter_id.html")
+    data=None
+    eventID='1234'
+    render_template("Enter_id.html")
+    con=sqlite3.connect('nosh.db')
+    c=con.cursor()
+    eventID=request.form.get("Event_ID")
+    print(eventID)
+    c.execute("Select Phno, Event_name, Organizer_name, Venue, Date, Time from Event where Event_ID=(?)",(eventID,))
+    data=c.fetchall()
+    print(data)
+    return render_template("Enter_id.html",data=data)    
 
 @app.route('/loginSignup', methods=['POST','GET'])
 def loginSignup():
