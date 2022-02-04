@@ -6,6 +6,8 @@ import random
 
 current_username=None
 current_pass=None
+current_id=None
+
 def id():
     number = random.randint(1000,9999)
     return number
@@ -24,14 +26,15 @@ def Create_event():
 
 @app.route('/Enter_id',methods=['POST','GET'])
 def Enter_id():
+    global current_id
     data=None
-    eventID='1234'
+    current_id='1234'
     render_template("Enter_id.html")
     con=sqlite3.connect('nosh.db')
     c=con.cursor()
-    eventID=request.form.get("Event_ID")
-    print(eventID)
-    c.execute("Select Phno, Event_name, Organizer_name, Venue, Date, Time from Event where Event_ID=(?)",(eventID,))
+    current_id=request.form.get("Event_ID")
+    print(current_id)
+    c.execute("Select Phno, Event_name, Organizer_name, Venue, Date, Time from Event where Event_ID=(?)",(current_id,))
     data=c.fetchall()
     print(data)
     return render_template("Enter_id.html",data=data)    
@@ -119,8 +122,11 @@ def ngo():
     data=c.fetchall()
     return render_template("ngo.html",value=data)
 
-@app.route('/success',methods=['GET'])
+@app.route('/success',methods=['POST'])
 def success():
+    global current_id
+    Anum=request.form.get("Anum")
+    print(Anum)
     return render_template("success.html")
 
 @app.route('/error',methods=['GET'])
