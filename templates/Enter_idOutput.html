@@ -5,15 +5,15 @@
 <div class="tb">
 
     <h1>Mark your Attendance</h1>
-    <form name="Enter_id" method="post">
+    <form method="post">
         <table>
             <tr>
                 <td>Enter The Unique_ID</td>
                 <td><input type="text" name="Event_ID" required style="width:193px"></td>
             </tr>
             <tr>
-                <td>Submit:</td>
-                <td><input type="submit" name="submit" value="Submit" style="width:193px"></td>
+                <td>Click on submit to record your response</td>
+                <td><input type="submit" name="" value="Submit" style="width:193px"></td>
             </tr>
 
         </table>
@@ -22,39 +22,28 @@
     <table>
         <tr>
             <td>Event Name:</td>
-            <td style="width:193px">{{event}}</td>
+            <td>{{event}}</td>
         </tr>
         <tr>
             <td>Organizer Name:</td>
-            <td style="width:193px">{{oname}}</td>
+            <td>{{oname}}</td>
         </tr>
         <tr>
             <td>Organizer Phone Number:</td>
-            <td style="width:193px">{{phno}}</td>
+            <td>{{phno}}</td>
         </tr>
         <tr>
             <td>Event Date:</td>
-            <td style="width:193px">{{date}}</td>
+            <td>{{date}}</td>
         </tr>
         <tr>
             <td>Event Time:</td>
-            <td style="width:193px">{{time}}</td>
+            <td>{{time}}</td>
         </tr>
         <tr>
             <td>Event Venue:</td>
-            <td style="width:193px">{{venue}}</td>
+            <td>{{venue}}</td>
         </tr>
-        <form name="Enter_id" action="/success" method="post">
-
-            <tr>
-                <td>Number of Attendees:</td>
-                <td><input type="text" name="Anum" required style="width:193px"></td>
-            </tr>
-            <tr>
-                <td>Submit:</td>
-                <td><input type="submit" name="submit" value="Submit" style="width:193px"></td>
-            </tr>
-        </form>
 
     </table>
     {% endfor %} {% endif %}
