@@ -103,13 +103,16 @@ def dashboard():
     con=sqlite3.connect('nosh.db')
     cur=con.cursor()
     cur.execute("Select O.Phone_number from Organizer O where O.Email_ID=(?) and O.Password=(?)",(current_username,current_pass,))
-    phoneNumber=cur.fetchall()[0]
-    if(phoneNumber):
-        print(phoneNumber)
-        cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(?)",(phoneNumber[0],))
-        details=cur.fetchall()
-        return render_template("dashboard.html",details=details)
-    else:
+    try:
+        phoneNumber=cur.fetchall()[0]
+        if(phoneNumber):
+            print(phoneNumber)
+            cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(?)",(phoneNumber[0],))
+            details=cur.fetchall()
+            return render_template("dashboard.html",details=details)
+        else:
+            return redirect(url_for(".error"))
+    except:
         return redirect(url_for(".error"))
     #cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(Select O.Phone_number from Organizer O where O.Email_ID=? and O.Password=?)",(current_username,current_pass,))
     
@@ -121,6 +124,15 @@ def ngo():
     c.execute("SELECT * FROM NGO")
     data=c.fetchall()
     return render_template("ngo.html",value=data)
+
+@app.route('/CAT',methods=['GET'])
+def cat():
+    con=sqlite3.connect('nosh.db')
+    c=con.cursor()
+    c.execute("SELECT * FROM caterers")
+    data=c.fetchall()
+    return render_template("caterer.html",value=data)
+
 
 @app.route('/success',methods=['POST'])
 def success():
