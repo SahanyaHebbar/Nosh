@@ -34,7 +34,7 @@ def Enter_id():
     c=con.cursor()
     current_id=request.form.get("Event_ID")
     print(current_id)
-    c.execute("Select Phno, Event_name, Organizer_name, Venue, Date, Time from Event where Event_ID=(?)",(current_id,))
+    c.execute("Select Phno, Event_name, Organizer_name, Venue, EDate, ETime from Event where Event_ID=(?)",(current_id,))
     data=c.fetchall()
     print(data)
     return render_template("Enter_id.html",data=data)    
