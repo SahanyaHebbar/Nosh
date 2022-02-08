@@ -126,7 +126,15 @@ def ngo():
 def success():
     global current_id
     Anum=request.form.get("Anum")
-    print(Anum)
+    def updateAttendees(anum,current_id):
+        con=sqlite3.connect('nosh.db')
+        c=con.cursor()
+        c.execute("select no_of_attendees from event where event_id=(?)",(current_id,))
+        noa=int(c.fetchall()[0][0])
+        noa=noa+int(anum)
+        c.execute("update event set no_of_attendees = (?) where event_id=(?)",(noa,current_id))
+        con.commit()
+    updateAttendees(Anum,current_id)
     return render_template("success.html")
 
 @app.route('/error',methods=['GET'])
