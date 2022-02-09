@@ -1,6 +1,38 @@
 <!DOCTYPE html> {% extends "base.html" %} {% block title %} Nosh | ABOUT US {% endblock %} {% block CSSlink %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='aboutUs.css') }}"> {% endblock %} {% block content %}
 
+
+<div class="section">
+    <div class="container">
+        <div class="content-section">
+            <div class="title">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="add">
+                <p>Bangalore Institute of Technology, <br>Krishna Rajendra Rd, Vishweshwarapura, <br> Bengaluru, Karnataka 560004</p>
+            </div>
+            <div class="dets">
+                <span class="icons"><i class="fa fa-envelope"></i></span>
+                <a class="linkstuff" href="mailto:nosh@gmail.com">nosh@gmail.com</a>
+            </div>
+            <div class="dets">
+                <span class="icons"><i class="fa fa-phone"></i></span>
+                <a class="linkstuff" href="tel:+91 9945305749">+91 9945305749</a>
+            </div>
+            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+        </div>
+        <div class="image-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.260543961424!2d77.57184291378967!3d12.955172818746277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1592715c4e7f%3A0x7dfaf94e52204678!2sBangalore%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1644401660416!5m2!1sen!2sin"
+                width="410" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+
 <div class="section">
     <div class="container">
         <div class="content-section">
@@ -21,7 +53,7 @@
         </div>
         <div class="image-section">
             <p><br></p>
-            <img src="{{ url_for('static',filename='images/Sujay.png') }}">
+            <img src="{{ url_for('static',filename='images/Sujay.jpeg') }}">
         </div>
     </div>
 </div>
@@ -46,4 +78,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
