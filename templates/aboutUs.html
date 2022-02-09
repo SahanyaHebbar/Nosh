@@ -1,0 +1,49 @@
+<!DOCTYPE html> {% extends "base.html" %} {% block title %} Nosh | ABOUT US {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='aboutUs.css') }}"> {% endblock %} {% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="content-section">
+            <div class="title">
+                <h1>About Us</h1>
+            </div>
+            <div class="content">
+                <h3>Sujay Prasad</h3>
+                <p>Co-Founder<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+            </div>
+            <div class="social">
+                <a href="https://www.facebook.com/profile.php?id=100005786927582" target="_blank"><i  class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/sujay-prasad-6b5a261ba" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/throttle_freak" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="image-section">
+            <p><br></p>
+            <img src="{{ url_for('static',filename='images/Sujay.png') }}">
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="content-section">
+            <div class="content">
+                <h3><br>Sahanya Hebbar</h3>
+                <p>Co-Founder<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+            </div>
+            <div class="social">
+                <a href="https://www.facebook.com/sahanya.hebbar/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/sahanya-hebbar-28380a213/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/sahanya.hebbar/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="{{ url_for('static',filename='images/Sahanya.png') }}">
+        </div>
+    </div>
+</div>
+{% endblock %}

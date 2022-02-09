@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     {% block CSSlink %} {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='base.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/76af01bf1c.js" crossorigin="anonymous"></script>
 </head>
@@ -18,7 +19,7 @@
                 <ul>
                     <li><a href="/">HOME</a></li>
                     {% block href %}{% endblock %}
-                    <li><a href="">CONTACT US</a></li>
+                    <li><a href="/aboutUs">CONTACT US</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
