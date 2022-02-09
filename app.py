@@ -34,7 +34,7 @@ def Enter_id():
     c=con.cursor()
     current_id=request.form.get("Event_ID")
     print(current_id)
-    c.execute("Select Phno, Event_name, Organizer_name, Venue, Date, Time from Event where Event_ID=(?)",(current_id,))
+    c.execute("Select Phno, Event_name, Organizer_name, Venue, EDate, ETime from Event where Event_ID=(?)",(current_id,))
     data=c.fetchall()
     print(data)
     return render_template("Enter_id.html",data=data)    
@@ -103,13 +103,16 @@ def dashboard():
     con=sqlite3.connect('nosh.db')
     cur=con.cursor()
     cur.execute("Select O.Phone_number from Organizer O where O.Email_ID=(?) and O.Password=(?)",(current_username,current_pass,))
-    phoneNumber=cur.fetchall()[0]
-    if(phoneNumber):
-        print(phoneNumber)
-        cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(?)",(phoneNumber[0],))
-        details=cur.fetchall()
-        return render_template("dashboard.html",details=details)
-    else:
+    try:
+        phoneNumber=cur.fetchall()[0]
+        if(phoneNumber):
+            print(phoneNumber)
+            cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(?)",(phoneNumber[0],))
+            details=cur.fetchall()
+            return render_template("dashboard.html",details=details)
+        else:
+            return redirect(url_for(".error"))
+    except:
         return redirect(url_for(".error"))
     #cur.execute("SELECT E.Event_ID, E.Event_name,E.No_of_Attendees from Event E where E.Phno=(Select O.Phone_number from Organizer O where O.Email_ID=? and O.Password=?)",(current_username,current_pass,))
     
@@ -122,11 +125,28 @@ def ngo():
     data=c.fetchall()
     return render_template("ngo.html",value=data)
 
+@app.route('/CAT',methods=['GET'])
+def cat():
+    con=sqlite3.connect('nosh.db')
+    c=con.cursor()
+    c.execute("SELECT * FROM caterers")
+    data=c.fetchall()
+    return render_template("caterer.html",value=data)
+
+
 @app.route('/success',methods=['POST'])
 def success():
     global current_id
     Anum=request.form.get("Anum")
-    print(Anum)
+    def updateAttendees(anum,current_id):
+        con=sqlite3.connect('nosh.db')
+        c=con.cursor()
+        c.execute("select no_of_attendees from event where event_id=(?)",(current_id,))
+        noa=int(c.fetchall()[0][0])
+        noa=noa+int(anum)
+        c.execute("update event set no_of_attendees = (?) where event_id=(?)",(noa,current_id))
+        con.commit()
+    updateAttendees(Anum,current_id)
     return render_template("success.html")
 
 @app.route('/error',methods=['GET'])

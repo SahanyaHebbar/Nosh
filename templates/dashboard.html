@@ -1,7 +1,10 @@
 <!DOCTYPE html>{% extends "base.html" %} {% block title %} Nosh | Dashboard {% endblock %} {% block CSSlink %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Enter_id.css') }}"> {% endblock %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Enter_id.css') }}"> {% endblock %} 
 
-
+{% block href %}<li><a href="/CAT">CATERER</a></li>
+<li><a href="/NGO">NGO</a></li>
+{% endblock %}
+{% block content %}
 <div class="tb">
 
     {% if details %}
