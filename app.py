@@ -152,3 +152,7 @@ def success():
 @app.route('/error',methods=['GET'])
 def error():
     return render_template("error.html")
+
+@app.route('/aboutUs',methods=['GET'])
+def aboutUs():
+    return render_template("aboutUs.html")
