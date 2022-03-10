@@ -34,8 +34,10 @@
                 <td><input type="text" name="Custom_event" style="width:193px"></td>
             </tr>
             <tr>
-                <td>Event Date:</td><div id="current_date">
-                <td><input type="date" name="Date" id = "datefield" style="width:193px" required></td></div>>
+                <td>Event Date:</td>
+                <div id="current_date">
+                    <td><input type="date" name="Date" id="datefield" style="width:193px" required></td>
+                </div>
             </tr>
             <tr>
                 <td>Event Time:</td>
@@ -52,19 +54,19 @@
         <section class="some"><input type="submit" name="" value="Submit" style="height: 40px; width: 150px;"></section>
     </form>
 </div>
-    <script>
+<script>
     var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
-var yyyy = today.getFullYear();
-if(dd<10){
-  dd='0'+dd
-} 
-if(mm<10){
-  mm='0'+mm
-} 
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
 
-today = yyyy+'-'+mm+'-'+dd;
-document.getElementById("datefield").setAttribute("min", today);
-    </script>
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("datefield").setAttribute("min", today);
+</script>
 {% endblock %}
