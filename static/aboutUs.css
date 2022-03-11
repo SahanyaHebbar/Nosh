@@ -101,11 +101,18 @@
     }
 }
 
-.icons .fa {
+.icons1 .fa {
     cursor: pointer;
     color: white;
     font-size: 20px;
     margin: 10px 0px;
+    padding: 18px 0;
+}
+
+.icons .fa {
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
 }
 
 .detsicons .fa {
