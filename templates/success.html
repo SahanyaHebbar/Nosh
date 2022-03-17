@@ -1,5 +1,24 @@
-<!DOCTYPE html>{% extends "base.html" %} {% block title %} Nosh | NGOs {% endblock %} {% block CSSlink %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Enter_id.css') }}"> {% endblock %} {% block content %}
-    
-    <h1>Success</h1>
-    {% endblock %}
+<!DOCTYPE html>{% extends "base.html" %} {% block title %} Nosh | Success {% endblock %} {% block CSSlink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Success.css') }}"> {% endblock %} {% block content %}
+
+<section class="page_404">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+                    <h1 class="text-center">Success!</h1>
+                    <div class="four_zero_four_bg">
+                    </div>
+                    <div class="content_box_404">
+                        <h3 class="h3">
+                        </br>Welcome to the club :))
+                        </h3>
+                        <p>We are excited to have you!</p>
+                        <a href="/" class="link_404">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

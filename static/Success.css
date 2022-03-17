@@ -1,0 +1,57 @@
+.page_404 {
+    padding: 10px 0;
+    background: #fff;
+    font-family: 'Arvo', serif;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+}
+
+.page_404 img {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+}
+
+.four_zero_four_bg {
+    background-image: url(https://blog.hubspot.com/hubfs/Smiling%20Leo%20Perfect%20GIF.gif);
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.page_404 h1 {
+    font-size: 80px;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+}
+
+.contant_box_404 h3 {
+    font-size: 80px;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+}
+
+.link_404 {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #f44336;
+    margin-top: 20px;
+    margin-bottom: 200px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+}
+
+.contant_box_404 {
+    margin-top: -50px;
+    justify-content: center;
+    text-align: center;
+    justify-content: center;
+    background-position: center;
+}
