@@ -34,14 +34,14 @@
 
 .content-section .title {
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 17px;
     color: white;
     text-decoration: underline;
     text-underline-offset: 5%;
 }
 
 .content-section .content h3 {
-    margin-top: 20px;
+    margin-top: 16px;
     color: #FFF3F3;
     font-size: 20px;
 }
