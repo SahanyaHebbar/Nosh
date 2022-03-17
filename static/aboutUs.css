@@ -14,7 +14,7 @@
     width: 80%;
     display: block;
     margin: auto;
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 .content-section {
@@ -49,10 +49,12 @@
 .content-section .content p {
     margin-top: 5px;
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     padding: 2px;
     font-weight: bold;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .content-section .social {
